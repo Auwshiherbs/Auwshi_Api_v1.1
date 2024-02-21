@@ -76,6 +76,10 @@ namespace Awushi.Web.Controllers
         [HttpDelete]
         public ActionResult DeleteById(int id)
         {
+            if(id == 0)
+            {
+                return BadRequest();
+            }
             var category = _dbContext.Categories.FirstOrDefault(x =>x.Id == id);
 
             if(category == null)
