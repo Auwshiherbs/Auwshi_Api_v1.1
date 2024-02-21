@@ -1,0 +1,6 @@
+@Awushi.Web_HostAddress = http://localhost:5067
+
+GET {{Awushi.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
