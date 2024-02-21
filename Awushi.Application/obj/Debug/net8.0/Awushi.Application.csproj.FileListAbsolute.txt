@@ -1,0 +1,12 @@
+C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Application\bin\Debug\net8.0\Awushi.Application.deps.json
+C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Application\bin\Debug\net8.0\Awushi.Application.dll
+C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Application\bin\Debug\net8.0\Awushi.Application.pdb
+C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Application\obj\Debug\net8.0\Awushi.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Application\obj\Debug\net8.0\Awushi.Application.AssemblyInfoInputs.cache
+C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Application\obj\Debug\net8.0\Awushi.Application.AssemblyInfo.cs
+C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Application\obj\Debug\net8.0\Awushi.Application.csproj.CoreCompileInputs.cache
+C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Application\obj\Debug\net8.0\Awushi.Application.sourcelink.json
+C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Application\obj\Debug\net8.0\Awushi.Application.dll
+C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Application\obj\Debug\net8.0\refint\Awushi.Application.dll
+C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Application\obj\Debug\net8.0\Awushi.Application.pdb
+C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Application\obj\Debug\net8.0\ref\Awushi.Application.dll
