@@ -1588,6 +1588,32 @@
             "rid": "win"
           }
         }
+      },
+      "Awushi.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Awushi.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Awushi.Domain.dll": {}
+        }
+      },
+      "Awushi.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Awushi.Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "8.0.2",
+          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.2",
+          "Microsoft.Extensions.DependencyInjection": "8.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Awushi.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Awushi.Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -4499,10 +4525,22 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Awushi.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Awushi.Domain/Awushi.Domain.csproj",
+      "msbuildProject": "../Awushi.Domain/Awushi.Domain.csproj"
+    },
+    "Awushi.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../Awushi.Infrastructure/Awushi.Infrastructure.csproj",
+      "msbuildProject": "../Awushi.Infrastructure/Awushi.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Awushi.Domain >= 1.0.0",
+      "Awushi.Infrastructure >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 8.0.2",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.2",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.2",
@@ -4542,7 +4580,14 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\Awushi.Domain\\Awushi.Domain.csproj": {
+              "projectPath": "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\Awushi.Domain\\Awushi.Domain.csproj"
+            },
+            "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\Awushi.Infrastructure\\Awushi.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\Awushi.Infrastructure\\Awushi.Infrastructure.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
