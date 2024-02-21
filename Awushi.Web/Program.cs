@@ -1,8 +1,11 @@
-using Awushi.Web.Data;
+using Awushi.Infrastructure;
+using Awushi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddInfrastructureServices();
+//j
 // Add services to the container.
 #region Database Connection
 
