@@ -134,3 +134,8 @@ C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Web\obj\Debug\net8.0
 C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Web\obj\Debug\net8.0\Awushi.Web.pdb
 C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Web\obj\Debug\net8.0\Awushi.Web.genruntimeconfig.cache
 C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Web\obj\Debug\net8.0\ref\Awushi.Web.dll
+C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Web\bin\Debug\net8.0\Awushi.Domain.dll
+C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Web\bin\Debug\net8.0\Awushi.Infrastructure.dll
+C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Web\bin\Debug\net8.0\Awushi.Domain.pdb
+C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Web\bin\Debug\net8.0\Awushi.Infrastructure.pdb
+C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Web\obj\Debug\net8.0\Awushi.Web.sourcelink.json
