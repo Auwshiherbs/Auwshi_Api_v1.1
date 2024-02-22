@@ -9,6 +9,6 @@ namespace Awushi.Domain.Contracts
 {
     public interface ICategoryRepostitory : IGenericRepository<Category>
     {
-        Task Update (Category category);
+        Task UpdateAsync (Category category);
     }
 }

@@ -15,9 +15,9 @@ namespace Awushi.Infrastructure.Repositories
         {
             
         }
-        public async Task Update(Category category)
+        public async Task UpdateAsync(Category category)
         {
-            _dbContext.Update(category);
+             _dbContext.Update(category);
             await _dbContext.SaveChangesAsync();
         }
     }

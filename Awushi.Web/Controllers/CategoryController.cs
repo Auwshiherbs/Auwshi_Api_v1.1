@@ -1,5 +1,9 @@
-﻿using Awushi.Web.Data;
-using Awushi.Web.Model;
+﻿
+using Awushi.Application.DTO.Category;
+using Awushi.Application.Services.Interface;
+using Awushi.Domain.Contracts;
+using Awushi.Domain.Models;
+using Awushi.Infrastructure.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,17 +13,17 @@ namespace Awushi.Web.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        private readonly ApplicationDbContext _dbContext;
-        public CategoryController(ApplicationDbContext dbContext)
+        private readonly ICategoryService _categoryService;
+        public CategoryController(ICategoryService categoryService)
         {
-            _dbContext = dbContext;
+            _categoryService = categoryService;
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet]
-        public ActionResult Get()
+        public async Task<ActionResult> Get()
         {
-            var categories = _dbContext.Categories.ToList();
+            var categories =await _categoryService.GetAllAsync();
             return Ok(categories);
         }
 
@@ -27,9 +31,9 @@ namespace Awushi.Web.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet]
         [Route("Details")]
-        public ActionResult GetById(int id)
+        public async Task<ActionResult> GetById(int id)
         {
-            var category = _dbContext.Categories.FirstOrDefault(x => x.Id == id);
+            var category = await _categoryService.GetByIdAsync(id);
             if (category == null)
             {
                 return NotFound();
@@ -41,15 +45,15 @@ namespace Awushi.Web.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
         [HttpPost]
-        public ActionResult Create([FromBody]Category category)
+        public async Task<ActionResult> Create([FromBody]CreateCategoryDto dto)
         {
             if(!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            _dbContext.Categories.Add(category);
-            _dbContext.SaveChanges();
-            return Ok();
+          var entity = await _categoryService.CreateAsync(dto);
+           
+            return Ok(entity);
         }
 
 
@@ -59,35 +63,33 @@ namespace Awushi.Web.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpPut]
-        public ActionResult Update([FromBody]Category category)
+        public async Task<ActionResult> Update([FromBody]UpdateCategoryDto dto)
         {
             if(!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _dbContext.Categories.Update(category);
-            _dbContext.SaveChanges();
+           await _categoryService.UpdateAsync(dto);
             return NoContent();
 
         }
 
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpDelete]
-        public ActionResult DeleteById(int id)
+        public async Task<ActionResult> DeleteById(int id)
         {
             if(id == 0)
             {
                 return BadRequest();
             }
-            var category = _dbContext.Categories.FirstOrDefault(x =>x.Id == id);
+            var category = await _categoryService.GetByIdAsync(id);
 
             if(category == null)
             {
                 return BadRequest($"There is no Category on this {id}");
             }
-            _dbContext.Categories.Remove(category);
-            _dbContext.SaveChanges();
+            await _categoryService  .DeleteAsync(id); 
             return NoContent();
         }
     }

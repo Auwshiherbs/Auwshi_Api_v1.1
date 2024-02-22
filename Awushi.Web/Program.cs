@@ -1,9 +1,11 @@
 using Awushi.Infrastructure;
+using Awushi.Application;
 using Awushi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Awushi.Application.Common;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices();
 //j
 // Add services to the container.

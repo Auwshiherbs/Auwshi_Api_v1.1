@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "UDjBWb5XhkhkLIIkRB1W0rart3e450OBv29DUSOolloeCE9/yBmcfIm0zongHCuOlyhdthmVXbZn2PPC53gqPg==",
+  "dgSpecHash": "F4L3QDFyB+3qBROweuY40tQkNQihU3DL7a/6IdIu6KQr0Ucm0zKPntOyVRkem3TXnrc9WP8lwIfl6LWa1qCfXA==",
   "success": true,
   "projectFilePath": "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\Awushi.Application\\Awushi.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\harry potter\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\harry potter\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "C:\\Users\\harry potter\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\harry potter\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\harry potter\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\harry potter\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

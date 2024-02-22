@@ -24,8 +24,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "category",
-        "Type": "Awushi.Domain.Models.Category",
+        "Name": "dto",
+        "Type": "Awushi.Application.DTO.Category.CreateCategoryDto",
         "IsRequired": true
       }
     ],
@@ -55,8 +55,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "category",
-        "Type": "Awushi.Domain.Models.Category",
+        "Name": "dto",
+        "Type": "Awushi.Application.DTO.Category.UpdateCategoryDto",
         "IsRequired": true
       }
     ],
