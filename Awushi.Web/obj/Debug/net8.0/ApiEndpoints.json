@@ -9,9 +9,18 @@
     "Parameters": [],
     "ReturnTypes": [
       {
+        "Type": "Awushi.Application.Common.APIResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
         "Type": "System.Void",
         "MediaTypes": [],
-        "StatusCode": 200
+        "StatusCode": 500
       }
     ]
   },
@@ -31,9 +40,13 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
+        "Type": "Awushi.Application.Common.APIResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 201
       },
       {
         "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
@@ -43,6 +56,11 @@
           "text/json"
         ],
         "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
       }
     ]
   },
@@ -62,18 +80,13 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "Type": "Awushi.Application.Common.APIResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",
           "text/json"
         ],
-        "StatusCode": 400
-      },
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 204
+        "StatusCode": 200
       }
     ]
   },
@@ -93,9 +106,13 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 204
+        "Type": "Awushi.Application.Common.APIResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
       }
     ]
   },
@@ -124,9 +141,18 @@
         "StatusCode": 404
       },
       {
+        "Type": "Awushi.Application.Common.APIResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
         "Type": "System.Void",
         "MediaTypes": [],
-        "StatusCode": 200
+        "StatusCode": 500
       }
     ]
   }
