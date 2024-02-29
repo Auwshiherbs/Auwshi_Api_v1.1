@@ -2,6 +2,7 @@
 using Awushi.Application.DTO.Brand;
 using Awushi.Application.Services.Interface;
 using Awushi.Domain.Contracts;
+using Awushi.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,12 @@ namespace Awushi.Application.Services
             _brandRepository = brandRepository;
             _mapper = mapper;
         }
-        public Task<BrandDto> CreateAsync(CreateBrandDto createBrandDto)
+        public async Task<BrandDto> CreateAsync(CreateBrandDto createBrandDto)
         {
-            throw new NotImplementedException();
+            var brand = _mapper.Map<Brand>(createBrandDto);   
+            var createdEntity = await _brandRepository.CreateAsync(brand);
+            var entity = _mapper.Map<BrandDto>(createdEntity);
+            return entity;
         }
 
         public Task DeleteAsync(int id)
