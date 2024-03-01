@@ -29,24 +29,31 @@ namespace Awushi.Application.Services
             return entity;
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var brand =  await _brandRepository.GetByIdAsync(x=>x.Id==id);
+            await _brandRepository.DeleteAsync(brand);
         }
 
-        public Task<IEnumerable<BrandDto>> GetAllAsync(int id)
+        public async Task<IEnumerable<BrandDto>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var brands = await _brandRepository.GetAllAsync();
+            
+            return _mapper.Map<List<BrandDto>>(brands);
+           
+
         }
 
-        public Task<BrandDto> GetByIdAsync(int id)
+        public async Task<BrandDto> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var brand = await _brandRepository.GetByIdAsync(x=>x.Id == id);
+            return _mapper.Map<BrandDto>(brand);
         }
 
-        public Task UpdateAsync(UpdateBrandDto updateBrandDto)
+        public async Task UpdateAsync(UpdateBrandDto updateBrandDto)
         {
-            throw new NotImplementedException();
+            var brand = _mapper.Map<Brand>(updateBrandDto);
+            await _brandRepository.UpdateAsync(brand);
         }
     }
 }

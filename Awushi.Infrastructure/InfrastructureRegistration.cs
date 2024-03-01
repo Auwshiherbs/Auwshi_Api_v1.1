@@ -15,6 +15,7 @@ namespace Awushi.Infrastructure
         {
             services.AddScoped(typeof(IGenericRepository<>), typeof (GenericRepository<>));
             services.AddScoped<ICategoryRepostitory, CategoryRepostitory>();
+            services.AddScoped<IBrandRepository, BrandRepository>();
             return services;
         }
     }

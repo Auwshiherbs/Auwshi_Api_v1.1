@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Awushi.Application.DTO.Brand;
 using Awushi.Application.DTO.Category;
 using Awushi.Domain.Models;
 using System;
@@ -16,6 +17,10 @@ namespace Awushi.Application.Common
             CreateMap<Category,CreateCategoryDto>().ReverseMap();
             CreateMap<Category,UpdateCategoryDto>().ReverseMap();
             CreateMap<Category,CategoryDto>().ReverseMap();
+
+            CreateMap<Brand, CreateBrandDto>().ReverseMap();
+            CreateMap<Brand, UpdateBrandDto>().ReverseMap();
+            CreateMap<Brand, BrandDto>().ReverseMap();
         }
     }
 }

@@ -120,7 +120,7 @@ namespace Awushi.Web.Controllers
                 if (!ModelState.IsValid)
                 {
                     _response.StatusCode = HttpStatusCode.BadRequest;
-                    _response.DisplayMessage = CommanMessage.CreateOperationFailed;
+                    _response.DisplayMessage = CommanMessage.UpdateOperationFailed;
                     _response.AddError(ModelState.ToString());
                 }
 
