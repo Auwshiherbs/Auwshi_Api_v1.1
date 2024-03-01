@@ -3,6 +3,7 @@ using Awushi.Application;
 using Awushi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Awushi.Application.Common;
+using Awushi.Infrastructure.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddApplicationServices();
@@ -23,8 +24,34 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+#region Configuration for seeding data
+static async void UpdateDatabaseAsync(IHost host)
+{
+    using (var scope = host.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        try
+        {
+            var context = services.GetRequiredService<ApplicationDbContext>();
+            if (context.Database.IsSqlServer())
+            {
+                context.Database.Migrate();
+            }
+            await SeedData.SeedDataAsync(context);
+        }
+        catch (Exception ex)
+        {
+            var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+            logger.LogError(ex,"An Error Occured when seeding data");
+        }
+    }
+
+}
+#endregion
+
 var app = builder.Build();
 
+UpdateDatabaseAsync(app);
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

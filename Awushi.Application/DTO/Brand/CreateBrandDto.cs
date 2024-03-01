@@ -12,6 +12,6 @@ namespace Awushi.Application.DTO.Brand
         [Required]
         public string Name { get; set; }
         [Required]
-        public DateTime EstablishedYear { get; set; } = DateTime.UtcNow;
+        public int EstablishedYear { get; set; }
     }
 }

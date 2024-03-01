@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Awushi.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240229041633_BrandModel")]
-    partial class BrandModel
+    [Migration("20240301102028_initialMigration")]
+    partial class initialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,8 +33,8 @@ namespace Awushi.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("EstablishedYear")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("EstablishedYear")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()

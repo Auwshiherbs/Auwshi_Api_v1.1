@@ -30,8 +30,8 @@ namespace Awushi.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("EstablishedYear")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("EstablishedYear")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()

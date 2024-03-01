@@ -10,6 +10,6 @@ namespace Awushi.Application.DTO.Brand
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public DateTime EstablishedYear { get; set; } = DateTime.UtcNow;
+        public int EstablishedYear { get; set; }
     }
 }
