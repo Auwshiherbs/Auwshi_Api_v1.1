@@ -38,13 +38,13 @@ namespace Awushi.Application.Services
 
         public async Task<IEnumerable<ProductDto>> GetAllAsync()
         {
-            var product = await _repository.GetAllAsync();
+            var product = await _repository.GetAllProductAsync();
             return _mapper.Map<List<ProductDto>>(product);
         }
 
         public async Task<ProductDto> GetByIdAsync(int id)
         {
-            var product =await _repository.GetByIdAsync(x=>x.Id == id);
+            var product =await _repository.GetDetailsAsync(id);
             return _mapper.Map<ProductDto>(product);
         }
 

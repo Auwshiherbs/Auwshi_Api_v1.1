@@ -1,6 +1,6 @@
-﻿    using Awushi.Application.ApplicationConstants;
+﻿using Awushi.Application.ApplicationConstants;
 using Awushi.Application.Common;
-using Awushi.Application.DTO.Brand;
+using Awushi.Application.DTO.Product;
 using Awushi.Application.Services.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,13 +10,14 @@ namespace Awushi.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BrandController : ControllerBase
+    public class ProductController : ControllerBase
     {
-        private readonly IBrandService _brandService;
+        private readonly IProductService _productService;
         protected APIResponse _response;
-        public BrandController(IBrandService brandService)
+
+        public ProductController(IProductService productService)
         {
-            _brandService = brandService;
+            _productService = productService;
             _response = new APIResponse();
         }
 
@@ -27,19 +28,17 @@ namespace Awushi.Web.Controllers
         {
             try
             {
-                var brands = await _brandService.GetAllAsync();
+                var products = await _productService.GetAllAsync();
                 _response.StatusCode = HttpStatusCode.OK;
-                _response.Result = brands;
+                _response.Result = products;
             }
             catch (Exception)
             {
                 _response.StatusCode = HttpStatusCode.InternalServerError;
                 _response.AddError(CommanMessage.SystemError);
-
             }
 
             return _response;
-
         }
 
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -47,33 +46,35 @@ namespace Awushi.Web.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet]
         [Route("Details")]
+
         public async Task<ActionResult<APIResponse>> GetById(int id)
         {
             try
             {
-                var brand = await _brandService.GetByIdAsync(id);
-                if (brand == null)
+                var product = await _productService.GetByIdAsync(id);
+                if (product == null)
                 {
                     _response.StatusCode = HttpStatusCode.NotFound;
-                    _response.DisplayMessage = CommanMessage.RecordNotFound;
+                    _response.AddError(CommanMessage.RecordNotFound);
                 }
                 _response.StatusCode = HttpStatusCode.OK;
                 _response.IsSuccess = true;
-                _response.Result = brand;
-
-            } catch (Exception)
+                _response.Result = product;
+            }
+            catch (Exception)
             {
                 _response.StatusCode = HttpStatusCode.InternalServerError;
                 _response.AddError(CommanMessage.SystemError);
             }
             return _response;
+
         }
 
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPost]
-        public async Task<ActionResult<APIResponse>> Create([FromBody] CreateBrandDto createBrandDto)
+        public async Task<ActionResult<APIResponse>> Create([FromBody] CreateProductDto createProductDto)
         {
             try
             {
@@ -82,32 +83,31 @@ namespace Awushi.Web.Controllers
                     _response.StatusCode = HttpStatusCode.BadRequest;
                     _response.DisplayMessage = CommanMessage.CreateOperationFailed;
                     _response.AddError(ModelState.ToString());
-
                 }
-
-                var brand = await _brandService.CreateAsync(createBrandDto);
-                _response.StatusCode = HttpStatusCode.OK;
+                var product = await _productService.CreateAsync(createProductDto);
+                _response.StatusCode = HttpStatusCode.Created;
                 _response.IsSuccess = true;
                 _response.DisplayMessage = CommanMessage.CreateOperationSuccess;
-                _response.Result = brand;
+                _response.Result = product;
             }
             catch (Exception)
             {
                 _response.StatusCode = HttpStatusCode.InternalServerError;
-                _response.DisplayMessage = CommanMessage.CreateOperationFailed;
+                _response.DisplayMessage = CommanMessage.CreateOperationSuccess;
                 _response.AddError(CommanMessage.SystemError);
 
             }
-
             return _response;
+
         }
 
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPut]
-        public async Task<ActionResult<APIResponse>> Update([FromBody] UpdateBrandDto updateBrandDto)
+        public async Task<ActionResult<APIResponse>> Update([FromBody]UpdateProductDto updateProductDto)
         {
+
             try
             {
                 if (!ModelState.IsValid)
@@ -116,24 +116,22 @@ namespace Awushi.Web.Controllers
                     _response.DisplayMessage = CommanMessage.UpdateOperationFailed;
                     _response.AddError(ModelState.ToString());
                 }
-                await _brandService.UpdateAsync(updateBrandDto);
+                await _productService.UpdateAsync(updateProductDto);
                 _response.StatusCode = HttpStatusCode.NoContent;
                 _response.IsSuccess = true;
                 _response.DisplayMessage = CommanMessage.UpdateOperationSuccess;
-
             }
             catch (Exception)
             {
                 _response.StatusCode = HttpStatusCode.InternalServerError;
-                _response.DisplayMessage = CommanMessage.UpdateOperationFailed;
+                _response.DisplayMessage = CommanMessage.CreateOperationFailed;
                 _response.AddError(CommanMessage.SystemError);
-
             }
             return Ok(_response);
         }
 
-
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpDelete]
@@ -141,32 +139,31 @@ namespace Awushi.Web.Controllers
         {
             try
             {
-                if(id == 0)
+                if (id == 0)
                 {
-                    _response.StatusCode=HttpStatusCode.BadRequest;
-                    _response.DisplayMessage= CommanMessage.DeleteOperationFailed;
+                    _response.StatusCode = HttpStatusCode.BadRequest;
+                    _response.DisplayMessage = CommanMessage.DeleteOperationFailed;
                     _response.AddError(ModelState.ToString());
                 }
-                var brand = await _brandService.GetByIdAsync(id);
-                if (brand == null)
+                var product = await _productService.GetByIdAsync(id);
+                if (product == null)
                 {
                     _response.StatusCode = HttpStatusCode.NotFound;
                     _response.DisplayMessage = CommanMessage.DeleteOperationFailed;
                     _response.AddError(ModelState.ToString());
                 }
-                await _brandService.DeleteAsync(id);
+                await _productService.DeleteAsync(id);
                 _response.StatusCode = HttpStatusCode.NoContent;
                 _response.IsSuccess = true;
                 _response.DisplayMessage = CommanMessage.DeleteOperationSuccess;
             }
             catch (Exception)
             {
-                _response.StatusCode= HttpStatusCode.InternalServerError;
-                _response.DisplayMessage= CommanMessage.DeleteOperationFailed;
+                _response.StatusCode = HttpStatusCode.InternalServerError;
+                _response.DisplayMessage = CommanMessage.DeleteOperationFailed;
                 _response.AddError(CommanMessage.SystemError);
             }
-            return Ok(_response);
+            return _response;
         }
-
     }
 }
