@@ -41,6 +41,28 @@ namespace Awushi.Web.Controllers
             return _response;
         }
 
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [HttpGet]
+        [Route("Filter")]
+        public async Task<ActionResult<APIResponse>> GetFilter(int? categoryId, int? brandId)
+        {
+            try
+            {
+                var products = await _productService.GetAllByFilterAsync(categoryId, brandId);
+                _response.StatusCode = HttpStatusCode.OK;
+                _response.Result = products;
+            }
+            catch (Exception)
+            {
+                _response.StatusCode = HttpStatusCode.InternalServerError;
+                _response.AddError(CommanMessage.SystemError);
+            }
+
+            return _response;
+        }
+
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
