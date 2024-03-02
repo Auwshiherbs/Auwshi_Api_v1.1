@@ -1,4 +1,4 @@
-﻿using Awushi.Application.ApplicationConstants;
+﻿    using Awushi.Application.ApplicationConstants;
 using Awushi.Application.Common;
 using Awushi.Application.DTO.Brand;
 using Awushi.Application.Services.Interface;
@@ -163,7 +163,7 @@ namespace Awushi.Web.Controllers
             {
                 _response.StatusCode= HttpStatusCode.InternalServerError;
                 _response.DisplayMessage= CommanMessage.DeleteOperationFailed;
-                _response.AddError(CommanMessage.DeleteOperationFailed);
+                _response.AddError(CommanMessage.SystemError);
             }
             return Ok(_response);
         }

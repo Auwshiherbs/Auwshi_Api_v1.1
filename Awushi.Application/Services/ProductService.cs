@@ -38,13 +38,30 @@ namespace Awushi.Application.Services
 
         public async Task<IEnumerable<ProductDto>> GetAllAsync()
         {
-            var product = await _repository.GetAllAsync();
+            var product = await _repository.GetAllProductAsync();
             return _mapper.Map<List<ProductDto>>(product);
+        }
+
+        public async Task<IEnumerable<ProductDto>> GetAllByFilterAsync(int? categoryId, int? brandId)
+        {
+            var query = await _repository.GetAllProductAsync();
+
+            if (categoryId>0)
+            {
+                query = query.Where(x => x.CategoryId == categoryId);
+            }
+            if (brandId>0)
+            {
+                query = query.Where(x=>x.BrandId == brandId);
+            }
+
+            var result = _mapper.Map<List<ProductDto>>(query);
+            return result;
         }
 
         public async Task<ProductDto> GetByIdAsync(int id)
         {
-            var product =await _repository.GetByIdAsync(x=>x.Id == id);
+            var product =await _repository.GetDetailsAsync(id);
             return _mapper.Map<ProductDto>(product);
         }
 
