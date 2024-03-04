@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentValidation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,4 +13,6 @@ namespace Awushi.Application.DTO.Brand
         public string Name { get; set; }
         public int EstablishedYear { get; set; }
     }
+
+    
 }

@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Awushi.Application.DTO.Product;
+using Awushi.Application.InputModels;
+using Awushi.Application.OutputModels;
 using Awushi.Application.Services.Interface;
 using Awushi.Domain.Contracts;
 using Awushi.Domain.Models;
@@ -14,10 +16,12 @@ namespace Awushi.Application.Services
     public class ProductService : IProductService
     {
         private readonly IProductRepository _repository;
+        private readonly IPaginationService<ProductDto,Product> _paginationService;
         private readonly IMapper _mapper;
-        public ProductService(IProductRepository repository,  IMapper mapper)
+        public ProductService(IProductRepository repository, IPaginationService<ProductDto, Product> paginationService, IMapper mapper)
         {
             _repository = repository;
+            _paginationService = paginationService;
             _mapper = mapper;
         }
 
@@ -42,9 +46,11 @@ namespace Awushi.Application.Services
             return _mapper.Map<List<ProductDto>>(product);
         }
 
-        public async Task<IEnumerable<ProductDto>> GetAllByFilterAsync(int? categoryId, int? brandId)
+        public async Task<IEnumerable<ProductDto>> GetAllByFilterAsync(int? categoryId, int? brandId, double? price)
         {
-            var query = await _repository.GetAllProductAsync();
+            var data = await _repository.GetAllProductAsync();
+            IEnumerable<Product> query = data;
+
 
             if (categoryId>0)
             {
@@ -53,6 +59,10 @@ namespace Awushi.Application.Services
             if (brandId>0)
             {
                 query = query.Where(x=>x.BrandId == brandId);
+            }
+            if (price>0)
+            {
+                query = query.Where(x => x.Price == price);
             }
 
             var result = _mapper.Map<List<ProductDto>>(query);
@@ -63,6 +73,13 @@ namespace Awushi.Application.Services
         {
             var product =await _repository.GetDetailsAsync(id);
             return _mapper.Map<ProductDto>(product);
+        }
+
+        public async Task<PaginationVM<ProductDto>> GetPagination(PaginationInputModel pagination)
+        {
+            var source =await _repository.GetAllProductAsync();
+            var result = _paginationService.GetPagination(source, pagination);
+            return result;
         }
 
         public async Task UpdateAsync(UpdateProductDto updateProductDto)

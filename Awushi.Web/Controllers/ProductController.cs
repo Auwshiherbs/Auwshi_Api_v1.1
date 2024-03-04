@@ -1,6 +1,7 @@
 ﻿using Awushi.Application.ApplicationConstants;
 using Awushi.Application.Common;
 using Awushi.Application.DTO.Product;
+using Awushi.Application.InputModels;
 using Awushi.Application.Services.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -41,16 +42,36 @@ namespace Awushi.Web.Controllers
             return _response;
         }
 
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [HttpPost]
+        [Route("Pagination")]
+        public async Task<ActionResult<APIResponse>> GetByPagination(PaginationInputModel paginationInputModel)
+        {
+            try
+            {
+                var products = await _productService.GetPagination(paginationInputModel);
+                _response.StatusCode = HttpStatusCode.OK;
+                _response.Result = products;
+            }
+            catch (Exception)
+            {
+                _response.StatusCode = HttpStatusCode.InternalServerError;
+                _response.AddError(CommanMessage.SystemError);
+            }
+
+            return _response;
+        }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet]
         [Route("Filter")]
-        public async Task<ActionResult<APIResponse>> GetFilter(int? categoryId, int? brandId)
+        public async Task<ActionResult<APIResponse>> GetFilter(int? categoryId, int? brandId, double? price)
         {
             try
             {
-                var products = await _productService.GetAllByFilterAsync(categoryId, brandId);
+                var products = await _productService.GetAllByFilterAsync(categoryId, brandId, price);
                 _response.StatusCode = HttpStatusCode.OK;
                 _response.Result = products;
             }

@@ -15,6 +15,7 @@ namespace Awushi.Application
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddAutoMapper(typeof(MappingProfile));
+            services.AddScoped(typeof(IPaginationService<,>), typeof(PaginationService<,>));
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IBrandService,BrandService>();
             services.AddScoped<IProductService, ProductService>();

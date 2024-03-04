@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "F4L3QDFyB+3qBROweuY40tQkNQihU3DL7a/6IdIu6KQr0Ucm0zKPntOyVRkem3TXnrc9WP8lwIfl6LWa1qCfXA==",
+  "dgSpecHash": "64qlnY+yx5OhX9tGKF2LKyNG0iAeLXpWStzUJCJnRYIXHwIWs62O1Q1Zb/S2Q81RhwN8ml+HKHkmUZvTlltPbw==",
   "success": true,
   "projectFilePath": "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\Awushi.Application\\Awushi.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\harry potter\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\harry potter\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
+    "C:\\Users\\harry potter\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\harry potter\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.9.0\\fluentvalidation.dependencyinjectionextensions.11.9.0.nupkg.sha512",
     "C:\\Users\\harry potter\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
     "C:\\Users\\harry potter\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\harry potter\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
