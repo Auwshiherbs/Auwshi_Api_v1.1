@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using Awushi.Application.DTO.Brand;
 using Awushi.Application.DTO.Category;
 using Awushi.Application.Services.Interface;
 using Awushi.Domain.Contracts;
 using Awushi.Domain.Models;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +24,9 @@ namespace Awushi.Application.Services
         }
         public async Task<CategoryDto> CreateAsync(CreateCategoryDto createCategoryDto)
         {
+            var validator = new CreateBrandDtoValidator();
+            var result = await validator.ValidateAsync(createCategoryDto);
+
             var category = _mapper.Map<Category>(createCategoryDto);
             var createdEntity =  await _categoryRepostitory.CreateAsync(category);
             var entity = _mapper.Map<CategoryDto>(createdEntity);

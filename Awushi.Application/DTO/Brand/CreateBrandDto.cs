@@ -16,7 +16,7 @@ namespace Awushi.Application.DTO.Brand
         public int EstablishedYear { get; set; }
     }
 
-    public class CreateBrandDtoValidator : AbstractValidator<BrandDto>
+    public class CreateBrandDtoValidator : AbstractValidator<CreateBrandDto>
     {
         public CreateBrandDtoValidator()
         {

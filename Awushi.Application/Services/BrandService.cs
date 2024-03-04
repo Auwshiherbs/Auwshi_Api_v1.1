@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Awushi.Application.DTO.Brand;
+using Awushi.Application.Exceptions;
 using Awushi.Application.Services.Interface;
 using Awushi.Domain.Contracts;
 using Awushi.Domain.Models;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +25,14 @@ namespace Awushi.Application.Services
         }
         public async Task<BrandDto> CreateAsync(CreateBrandDto createBrandDto)
         {
+            var validator = new CreateBrandDtoValidator();
+            var validatorResult = await validator.ValidateAsync(createBrandDto);
+
+            if (validatorResult.Errors.Any())
+            {
+                throw new BadRequestException("Invalid Brand Input",validatorResult);
+            }
+
             var brand = _mapper.Map<Brand>(createBrandDto);   
             var createdEntity = await _brandRepository.CreateAsync(brand);
             var entity = _mapper.Map<BrandDto>(createdEntity);
