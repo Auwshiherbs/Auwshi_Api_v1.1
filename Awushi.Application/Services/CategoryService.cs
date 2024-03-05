@@ -24,8 +24,6 @@ namespace Awushi.Application.Services
         }
         public async Task<CategoryDto> CreateAsync(CreateCategoryDto createCategoryDto)
         {
-            var validator = new CreateBrandDtoValidator();
-            var result = await validator.ValidateAsync(createCategoryDto);
 
             var category = _mapper.Map<Category>(createCategoryDto);
             var createdEntity =  await _categoryRepostitory.CreateAsync(category);

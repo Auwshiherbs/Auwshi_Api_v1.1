@@ -4,6 +4,7 @@ using Awushi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Awushi.Application.Common;
 using Awushi.Infrastructure.Common;
+using Awushi.Web.Middldwares;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddApplicationServices();
@@ -51,6 +52,8 @@ static async void UpdateDatabaseAsync(IHost host)
 
 var app = builder.Build();
 
+app.UseMiddleware<ExcepetionMiddleware>();
+
 UpdateDatabaseAsync(app);
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -59,6 +62,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseCors("customPolicy");
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

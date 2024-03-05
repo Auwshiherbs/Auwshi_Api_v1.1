@@ -1,6 +1,7 @@
 ﻿    using Awushi.Application.ApplicationConstants;
 using Awushi.Application.Common;
 using Awushi.Application.DTO.Brand;
+using Awushi.Application.Exceptions;
 using Awushi.Application.Services.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -70,6 +71,7 @@ namespace Awushi.Web.Controllers
         }
 
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPost]
@@ -90,6 +92,15 @@ namespace Awushi.Web.Controllers
                 _response.IsSuccess = true;
                 _response.DisplayMessage = CommanMessage.CreateOperationSuccess;
                 _response.Result = brand;
+            }
+            catch (BadRequestException ex)
+            {
+                _response.StatusCode = HttpStatusCode.InternalServerError;
+                _response.DisplayMessage = CommanMessage.CreateOperationFailed;
+                _response.AddError(CommanMessage.SystemError);
+                _response.AddWarning(ex.Message);
+                _response.Result = ex.ValidationError;
+
             }
             catch (Exception)
             {

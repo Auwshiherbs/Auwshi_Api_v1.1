@@ -55,6 +55,15 @@
           "application/json",
           "text/json"
         ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Awushi.Application.Common.APIResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 201
       },
       {

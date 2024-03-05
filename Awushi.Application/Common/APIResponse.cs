@@ -13,8 +13,8 @@ namespace Awushi.Application.Common
         public bool IsSuccess { get; set; } = false;
         public object Result { get; set; }
         public string DisplayMessage { get; set; } = "";
-        public List<APIError> Errors { get; set; }
-        public List<APIWarning> Warnings { get;}
+        public List<APIError> Errors { get; set; } = new();
+        public List<APIWarning> Warnings { get; } = new();
 
         public void AddError(string errorMessage)
         {
