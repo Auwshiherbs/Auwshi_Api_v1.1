@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Awushi.Application.Common;
 using Awushi.Infrastructure.Common;
 using Awushi.Web.Middldwares;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddApplicationServices();
@@ -19,6 +20,11 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("customPolicy",x=>x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 });
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+{
+
+}).AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

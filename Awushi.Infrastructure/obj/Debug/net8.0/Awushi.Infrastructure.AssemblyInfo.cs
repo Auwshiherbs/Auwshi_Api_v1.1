@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Awushi.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+11a9763aeacea9243e91a9498036376fe4028f65")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b36aa6e6b35e9e6d735ecfd333322a1adc535368")]
 [assembly: System.Reflection.AssemblyProductAttribute("Awushi.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Awushi.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
