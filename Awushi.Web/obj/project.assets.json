@@ -1770,6 +1770,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "Awushi.Application": "1.0.0",
           "Awushi.Domain": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.2",
           "Microsoft.EntityFrameworkCore": "8.0.2",

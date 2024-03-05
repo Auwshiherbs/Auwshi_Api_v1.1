@@ -193,6 +193,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\Awushi.Application\\Awushi.Application.csproj": {
+                "projectPath": "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\Awushi.Application\\Awushi.Application.csproj"
+              },
               "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\Awushi.Domain\\Awushi.Domain.csproj": {
                 "projectPath": "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\Awushi.Domain\\Awushi.Domain.csproj"
               }
