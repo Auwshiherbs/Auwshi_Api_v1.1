@@ -27,7 +27,7 @@ namespace Awushi.Application.Services
             ApplicationUser.Email = register.Email;
             ApplicationUser.UserName  = register.Email;
 
-            var result =await _userManager.CreateAsync(ApplicationUser);
+            var result =await _userManager.CreateAsync(ApplicationUser,register.Password);
 
             if (result.Succeeded)
             {

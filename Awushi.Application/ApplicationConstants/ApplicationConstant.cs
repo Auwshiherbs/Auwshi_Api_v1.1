@@ -11,6 +11,11 @@ namespace Awushi.Application.ApplicationConstants
     }
     public class CommanMessage
     {
+        public const string RegistrationSuccess = "Registration Success";
+        public const string RegistrationFailed = "Registration Failed";
+
+        public const string LoginSuccess = "Login Success";
+        public const string LoginFailed = "Login Failed";
         public const string CreateOperationSuccess = "Record Created Successfully";
         public const string UpdateOperationSuccess = "Record Updated Successfully";
         public const string DeleteOperationSuccess = "Record Deleted Successfully";

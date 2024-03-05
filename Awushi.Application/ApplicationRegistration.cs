@@ -16,6 +16,8 @@ namespace Awushi.Application
         {
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddScoped(typeof(IPaginationService<,>), typeof(PaginationService<,>));
+
+            services.AddScoped<IAuthService,AuthService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IBrandService,BrandService>();
             services.AddScoped<IProductService, ProductService>();
