@@ -1,5 +1,7 @@
 ﻿using Awushi.Domain.Models;
 using Awushi.Infrastructure.Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,24 @@ namespace Awushi.Infrastructure.Common
 {
     public class SeedData
     {
+
+        public static async Task SeedRoles(IServiceProvider serviceProvider)
+        {
+            using var scope  = serviceProvider.CreateScope();
+            var roleManagaer = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            var roles = new List<IdentityRole>
+            {
+                new IdentityRole {Name="ADMIN",NormalizedName="ADMIN"},
+                new IdentityRole {Name="CUSTOMER",NormalizedName="CUSTOMER"}
+            };
+            foreach (var role in roles) {
+                if (!await roleManagaer.RoleExistsAsync(role.Name))
+                {
+                    await roleManagaer.CreateAsync(role);
+                }
+            }
+        }
         public static async Task SeedDataAsync(ApplicationDbContext _dbContext)
         {
             if( !_dbContext.Brands.Any() )

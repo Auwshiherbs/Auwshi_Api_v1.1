@@ -31,7 +31,7 @@ namespace Awushi.Application.Services
 
             if (result.Succeeded)
             {
-                
+                await _userManager.AddToRoleAsync(ApplicationUser,"ADMIN");
             }
 
             return result.Errors;

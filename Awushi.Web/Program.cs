@@ -61,6 +61,10 @@ var app = builder.Build();
 app.UseMiddleware<ExcepetionMiddleware>();
 
 UpdateDatabaseAsync(app);
+
+
+var serviceProvide = app.Services;
+await SeedData.SeedRoles(serviceProvide);
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

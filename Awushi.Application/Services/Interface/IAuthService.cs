@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Awushi.Application.InputModels;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace Awushi.Application.Services.Interface
 {
     public interface IAuthService 
     {
-        Task<IEnumerable<IdentityError>> Register();
+        Task<IEnumerable<IdentityError>> Register(Register register);
     }
 }
