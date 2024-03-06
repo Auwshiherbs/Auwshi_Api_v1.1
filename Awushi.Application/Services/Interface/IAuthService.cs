@@ -11,5 +11,6 @@ namespace Awushi.Application.Services.Interface
     public interface IAuthService 
     {
         Task<IEnumerable<IdentityError>> Register(Register register);
+        Task<Object> Login(Login login);
     }
 }

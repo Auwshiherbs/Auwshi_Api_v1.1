@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8171CCFC-9DFA-47C0-B9D2-4A291A3736F8}|Awushi.Application\\Awushi.Application.csproj|c:\\users\\harry potter\\desktop\\auwshi_api_v1.1-master\\awushi.application\\services\\brandservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8171CCFC-9DFA-47C0-B9D2-4A291A3736F8}|Awushi.Application\\Awushi.Application.csproj|solutionrelative:awushi.application\\services\\brandservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8171CCFC-9DFA-47C0-B9D2-4A291A3736F8}|Awushi.Application\\Awushi.Application.csproj|c:\\users\\harry potter\\desktop\\auwshi_api_v1.1-master\\awushi.application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8171CCFC-9DFA-47C0-B9D2-4A291A3736F8}|Awushi.Application\\Awushi.Application.csproj|solutionrelative:awushi.application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8171CCFC-9DFA-47C0-B9D2-4A291A3736F8}|Awushi.Application\\Awushi.Application.csproj|c:\\users\\harry potter\\desktop\\auwshi_api_v1.1-master\\awushi.application\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8171CCFC-9DFA-47C0-B9D2-4A291A3736F8}|Awushi.Application\\Awushi.Application.csproj|solutionrelative:awushi.application\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8171CCFC-9DFA-47C0-B9D2-4A291A3736F8}|Awushi.Application\\Awushi.Application.csproj|c:\\users\\harry potter\\desktop\\auwshi_api_v1.1-master\\awushi.application\\services\\interface\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8171CCFC-9DFA-47C0-B9D2-4A291A3736F8}|Awushi.Application\\Awushi.Application.csproj|solutionrelative:awushi.application\\services\\interface\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,29 +30,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CategoryService.cs",
-              "DocumentMoniker": "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\Awushi.Application\\Services\\CategoryService.cs",
-              "RelativeDocumentMoniker": "Awushi.Application\\Services\\CategoryService.cs",
-              "ToolTip": "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\Awushi.Application\\Services\\CategoryService.cs",
-              "RelativeToolTip": "Awushi.Application\\Services\\CategoryService.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAAwAAAAAAAAAAA",
+              "DocumentIndex": 0,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\Awushi.Application\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "Awushi.Application\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\Awushi.Application\\Services\\AuthService.cs",
+              "RelativeToolTip": "Awushi.Application\\Services\\AuthService.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAAwDEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-01T07:14:35.76Z",
+              "WhenOpened": "2024-03-05T08:43:42.305Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BrandService.cs",
-              "DocumentMoniker": "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\Awushi.Application\\Services\\BrandService.cs",
-              "RelativeDocumentMoniker": "Awushi.Application\\Services\\BrandService.cs",
-              "ToolTip": "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\Awushi.Application\\Services\\BrandService.cs",
-              "RelativeToolTip": "Awushi.Application\\Services\\BrandService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACUAAAA9AAAA",
+              "DocumentIndex": 1,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\Awushi.Application\\Services\\Interface\\IAuthService.cs",
+              "RelativeDocumentMoniker": "Awushi.Application\\Services\\Interface\\IAuthService.cs",
+              "ToolTip": "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\Awushi.Application\\Services\\Interface\\IAuthService.cs",
+              "RelativeToolTip": "Awushi.Application\\Services\\Interface\\IAuthService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-01T07:14:31.807Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-05T08:41:57.113Z"
             }
           ]
         }

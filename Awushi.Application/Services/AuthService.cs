@@ -20,6 +20,8 @@ namespace Awushi.Application.Services
             _userManager = userManager;
             ApplicationUser = new();
         }
+
+
         public async Task<IEnumerable<IdentityError>> Register(Register register)
         {
            ApplicationUser.FirstName = register.FirstName;
@@ -36,6 +38,17 @@ namespace Awushi.Application.Services
 
             return result.Errors;
 
+        }
+
+        public async Task<object> Login(Login login)
+        {
+            ApplicationUser =await _userManager.FindByEmailAsync(login.Email);
+
+            if (ApplicationUser == null)
+            {
+                return "Invalid Email Address";
+
+            }
         }
     }
 }
