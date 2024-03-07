@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Awushi.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+08652d2ee48359b7d2e156d44c0338a4d8700f08")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bda49c646d0d4e8d981666db5f05df0430245ba9")]
 [assembly: System.Reflection.AssemblyProductAttribute("Awushi.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Awushi.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
