@@ -1,10 +1,15 @@
 ﻿using Awushi.Application.Common;
 using Awushi.Application.InputModels;
+using Awushi.Application.OutputModels;
 using Awushi.Application.Services.Interface;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,12 +19,14 @@ namespace Awushi.Application.Services
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager; 
+        private readonly IConfiguration _config;
         private ApplicationUser ApplicationUser;
 
-        public AuthService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AuthService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IConfiguration config)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _config = config;
             ApplicationUser = new();
         }
 
@@ -57,7 +64,14 @@ namespace Awushi.Application.Services
 
             if (result.Succeeded)
             {
-                return true;
+                var token = await GenerateToken();
+
+                LoginResponse loginResponse = new LoginResponse
+                {
+                    UserId = ApplicationUser.Id,
+                    Token = token
+                };
+                return loginResponse;
             }else
             {
                 if (result.IsLockedOut)
@@ -77,6 +91,31 @@ namespace Awushi.Application.Services
                     return "Login Failed";
                 }
             }
+        }
+
+
+        public async Task<string> GenerateToken()
+        {
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JwtSettings:Key"]));
+            var signingCredential = new SigningCredentials(securityKey,SecurityAlgorithms.HmacSha256);
+            var roles = await _userManager.GetRolesAsync(ApplicationUser);
+            var roleClaims = roles.Select(x=> new Claim(ClaimTypes.Role,x)).ToList();
+
+            List<Claim> claims = new List<Claim>()
+            {
+                new Claim(JwtRegisteredClaimNames.Email,ApplicationUser.Email)
+            }.Union(roleClaims).ToList(); 
+
+            var token = new JwtSecurityToken
+                (
+                    issuer: _config["JwtSettings:Issuer"],
+                    audience: _config["JwtSettings:Audience"],
+                    claims:claims,
+                    signingCredentials:signingCredential,
+                    expires: DateTime.UtcNow.AddMinutes(Convert.ToInt32(_config["JwtSettings:DurationInMinutes"]))
+                );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }
