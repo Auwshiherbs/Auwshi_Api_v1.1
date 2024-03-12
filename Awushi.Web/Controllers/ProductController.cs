@@ -77,6 +77,7 @@ namespace Awushi.Web.Controllers
             {
                 var products = await _productService.GetAllByFilterAsync(categoryId, brandId, price);
                 _response.StatusCode = HttpStatusCode.OK;
+                _response.IsSuccess = true;
                 _response.Result = products;
             }
             catch (Exception)
