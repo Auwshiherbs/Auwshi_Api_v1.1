@@ -3,6 +3,7 @@ using Awushi.Application.Common;
 using Awushi.Application.DTO.Product;
 using Awushi.Application.InputModels;
 using Awushi.Application.Services.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -22,6 +23,7 @@ namespace Awushi.Web.Controllers
             _response = new APIResponse();
         }
 
+        
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet]
@@ -31,7 +33,9 @@ namespace Awushi.Web.Controllers
             {
                 var products = await _productService.GetAllAsync();
                 _response.StatusCode = HttpStatusCode.OK;
+                _response.IsSuccess = true;
                 _response.Result = products;
+
             }
             catch (Exception)
             {
@@ -126,6 +130,7 @@ namespace Awushi.Web.Controllers
                     _response.StatusCode = HttpStatusCode.BadRequest;
                     _response.DisplayMessage = CommanMessage.CreateOperationFailed;
                     _response.AddError(ModelState.ToString());
+                    return BadRequest(_response);
                 }
                 var product = await _productService.CreateAsync(createProductDto);
                 _response.StatusCode = HttpStatusCode.Created;

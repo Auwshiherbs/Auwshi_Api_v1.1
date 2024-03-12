@@ -14,7 +14,7 @@ namespace Awushi.Application.OutputModels
         public int TotalNumberOfRecords { get; set; }
         public List<T> Items { get; set; }
         public bool HasPrevious => CurrenPage>=0;
-        public bool HasNext => CurrenPage<=TotalPages;
+        public bool HasNext => CurrenPage<TotalPages;
 
         public PaginationVM(int currenPage, int totalPages, int pageSize, int totalNumberOfRecords, List<T> items)
         {

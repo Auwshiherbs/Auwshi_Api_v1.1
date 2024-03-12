@@ -37,6 +37,14 @@ namespace Awushi.Web.Controllers
                     return _response;
                 }
                 var user = await _authService.Register(register);
+               
+                if (user.Count()>0)
+                {
+                    _response.StatusCode = HttpStatusCode.BadRequest;
+                    _response.IsSuccess = false;
+                    _response.DisplayMessage = CommanMessage.RegistrationFailed;
+                    _response.Result = user;
+                }
                 _response.StatusCode = HttpStatusCode.OK;
                 _response.IsSuccess = true;
                 _response.DisplayMessage = CommanMessage.RegistrationSuccess;
