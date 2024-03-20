@@ -1,4 +1,5 @@
 ﻿using Awushi.Domain.Common;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -28,5 +29,10 @@ namespace Awushi.Domain.Models
 
         public int Stock {  get; set; }
         public int Rating { get; set; }
+        public string ImageUrl { get; set; }
+        [NotMapped]
+        public string ImageName { get; set; }
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
     }
 }

@@ -5,6 +5,10 @@ using Awushi.Application.OutputModels;
 using Awushi.Application.Services.Interface;
 using Awushi.Domain.Contracts;
 using Awushi.Domain.Models;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +35,7 @@ namespace Awushi.Application.Services
             var createdEntity = await _repository.CreateAsync(product);
             var entity = _mapper.Map<ProductDto>(createdEntity);
             return entity;
-
+    
         }
 
         public async Task DeleteAsync(int id)

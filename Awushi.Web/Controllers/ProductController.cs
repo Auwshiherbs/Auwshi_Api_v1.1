@@ -16,11 +16,13 @@ namespace Awushi.Web.Controllers
     {
         private readonly IProductService _productService;
         protected APIResponse _response;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, IWebHostEnvironment hostEnvironment)
         {
             _productService = productService;
             _response = new APIResponse();
+            this._hostEnvironment = hostEnvironment;
         }
 
         
@@ -122,7 +124,7 @@ namespace Awushi.Web.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPost]
-        public async Task<ActionResult<APIResponse>> Create([FromBody] CreateProductDto createProductDto)
+        public async Task<ActionResult<APIResponse>> Create([FromForm] CreateProductDto createProductDto)
         {
             try
             {
@@ -133,6 +135,8 @@ namespace Awushi.Web.Controllers
                     _response.AddError(ModelState.ToString());
                     return BadRequest(_response);
                 }
+
+                createProductDto.ImageName = await SaveImage(createProductDto.ImageFile);
                 var product = await _productService.CreateAsync(createProductDto);
                 _response.StatusCode = HttpStatusCode.Created;
                 _response.IsSuccess = true;
@@ -213,6 +217,21 @@ namespace Awushi.Web.Controllers
                 _response.AddError(CommanMessage.SystemError);
             }
             return _response;
+        }
+
+        [NonAction]
+        public async Task<string> SaveImage(IFormFile imagefile)
+        {
+            string imageName = new String(Path.GetFileNameWithoutExtension(imagefile.FileName).Take(10).ToArray()).Replace(' ', '_');
+            imageName = imageName+DateTime.Now.ToString("yymmssff")+Path.GetExtension(imagefile.FileName);
+            var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images",imageName);
+
+            using (var fileStream = new FileStream(imagePath, FileMode.Create))
+            {
+                await imagefile.CopyToAsync(fileStream);
+            }
+
+            return imageName;
         }
     }
 }

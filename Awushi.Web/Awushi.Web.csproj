@@ -30,4 +30,8 @@
     <ProjectReference Include="..\Awushi.Infrastructure\Awushi.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+
 </Project>

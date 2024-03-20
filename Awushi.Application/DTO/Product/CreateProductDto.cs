@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Metadata;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -21,5 +23,11 @@ namespace Awushi.Application.DTO.Product
 
         public int Stock { get; set; }
         public int Rating { get; set; }
+        public string ImageName { get; set; }
+
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
+
+
     }
 }

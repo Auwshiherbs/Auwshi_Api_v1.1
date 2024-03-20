@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,5 +20,9 @@ namespace Awushi.Application.DTO.Product
         public double Price { get; set; }
         public int Stock { get; set; }
         public int Rating { get; set; }
+        public string ImageName { get; set; }
+
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
     }
 }
