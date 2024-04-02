@@ -13,7 +13,7 @@ using System.Net;
 
 namespace Awushi.Web.Controllers
 {
-    [Authorize]
+ //   [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoryController : ControllerBase

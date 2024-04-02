@@ -23,7 +23,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options=>options.UseSqlServe
 #endregion
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("customPolicy",x=>x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+    options.AddPolicy("CustomPolicy", x=>x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 });
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
@@ -124,7 +124,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors("customPolicy");
+app.UseCors("CustomPolicy");
 
 app.UseHttpsRedirection();
 

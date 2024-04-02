@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "+L/suVA1aI3Y0CI9ox125e8RRUDeA0NJsamhZKAsY3LfRi6Ws02EvyzztBzpEok8tOAuuiVcCpbaVjcWIWl/+Q==",
+  "dgSpecHash": "2yDDe+B9QpR6gu2+zsZMwnN2uFVWQvOkPPFaX/o44pi+KYymwhBpSCo1adq7T0OLbgO++lEZp/dWaSCwHjtzyA==",
   "success": true,
   "projectFilePath": "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\Awushi.Domain\\Awushi.Domain.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\harry potter\\.nuget\\packages\\awssdk.core\\3.7.302.20\\awssdk.core.3.7.302.20.nupkg.sha512",
+    "C:\\Users\\harry potter\\.nuget\\packages\\awssdk.s3\\3.7.307\\awssdk.s3.3.7.307.nupkg.sha512",
     "C:\\Users\\harry potter\\.nuget\\packages\\microsoft.aspnetcore.http.features\\3.1.32\\microsoft.aspnetcore.http.features.3.1.32.nupkg.sha512",
     "C:\\Users\\harry potter\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.32\\microsoft.extensions.primitives.3.1.32.nupkg.sha512",
     "C:\\Users\\harry potter\\.nuget\\packages\\system.io.pipelines\\4.7.5\\system.io.pipelines.4.7.5.nupkg.sha512"

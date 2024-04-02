@@ -1,4 +1,7 @@
-﻿using Awushi.Application.ApplicationConstants;
+﻿using Amazon;
+using Amazon.S3;
+using Amazon.S3.Model;
+using Awushi.Application.ApplicationConstants;
 using Awushi.Application.Common;
 using Awushi.Application.DTO.Product;
 using Awushi.Application.InputModels;
@@ -16,13 +19,16 @@ namespace Awushi.Web.Controllers
     {
         private readonly IProductService _productService;
         protected APIResponse _response;
-        private readonly IWebHostEnvironment _hostEnvironment;
-
-        public ProductController(IProductService productService, IWebHostEnvironment hostEnvironment)
+        //private readonly IWebHostEnvironment _hostEnvironment;
+        //private readonly IConfiguration _configuration;
+        //private readonly IAmazonS3 _s3Client;
+        public ProductController(IProductService productService)
         {
             _productService = productService;
             _response = new APIResponse();
-            this._hostEnvironment = hostEnvironment;
+            //this._hostEnvironment = hostEnvironment;
+            //_configuration = configuration;
+            //_s3Client = s3Client;
         }
 
         
@@ -136,7 +142,9 @@ namespace Awushi.Web.Controllers
                     return BadRequest(_response);
                 }
 
-                createProductDto.ImageName = await SaveImage(createProductDto.ImageFile);
+                // Save image to S3 bucket
+                //createProductDto.ImageName = await SaveImage(createProductDto.ImageFile);
+
                 var product = await _productService.CreateAsync(createProductDto);
                 _response.StatusCode = HttpStatusCode.Created;
                 _response.IsSuccess = true;
@@ -219,19 +227,42 @@ namespace Awushi.Web.Controllers
             return _response;
         }
 
-        [NonAction]
-        public async Task<string> SaveImage(IFormFile imagefile)
-        {
-            string imageName = new String(Path.GetFileNameWithoutExtension(imagefile.FileName).Take(10).ToArray()).Replace(' ', '_');
-            imageName = imageName+DateTime.Now.ToString("yymmssff")+Path.GetExtension(imagefile.FileName);
-            var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images",imageName);
+        //[NonAction]
+        //public async Task<string> SaveImage(IFormFile imagefile)
+        //{
+        //    try
+        //    {
+        //        if (imagefile==null || imagefile.Length<=0)
+        //        {
+        //            throw new ArgumentException("invalid image file");
+        //        }
 
-            using (var fileStream = new FileStream(imagePath, FileMode.Create))
-            {
-                await imagefile.CopyToAsync(fileStream);
-            }
+        //        //var AwsAccessKey = _configuration["AwsConfiguration:AwsAccessKey"];
+        //        //var AwsSecretKey = _configuration["AwsConfiguration:AwsSecretKey"];
+        //        //var AwsBucketName = _configuration["AwsConfiguration:AwsBucketName"];
+        //        //var Region = _configuration["AwsConfiguration:Region"];
 
-            return imageName;
-        }
+        //        // Initialize AmazonS3Client with credentials and region
+        //        var s3Client = new AmazonS3Client(AwsAccessKey, AwsSecretKey, RegionEndpoint.GetBySystemName(Region));
+        //        var key = Guid.NewGuid().ToString();
+
+        //        using (var stream = imagefile.OpenReadStream())
+        //        {
+        //            var putRequest = new PutObjectRequest
+        //            {
+        //                BucketName = AwsBucketName,
+        //                Key = key,
+        //                InputStream = stream,
+        //                ContentType = imagefile.ContentType
+        //            };
+        //            await _s3Client.PutObjectAsync(putRequest);
+        //        }
+        //        return key;
+        //    }
+        //    catch(Exception ) 
+        //    {
+        //        throw;
+        //    }
+        //}
     }
 }

@@ -2,7 +2,9 @@ C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Infrastructure\bin\D
 C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Infrastructure\bin\Debug\net8.0\Awushi.Infrastructure.runtimeconfig.json
 C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Infrastructure\bin\Debug\net8.0\Awushi.Infrastructure.dll
 C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Infrastructure\bin\Debug\net8.0\Awushi.Infrastructure.pdb
+C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Infrastructure\bin\Debug\net8.0\Awushi.Application.dll
 C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Infrastructure\bin\Debug\net8.0\Awushi.Domain.dll
+C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Infrastructure\bin\Debug\net8.0\Awushi.Application.pdb
 C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Infrastructure\bin\Debug\net8.0\Awushi.Domain.pdb
 C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Infrastructure\obj\Debug\net8.0\Awushi.Infrastructure.csproj.AssemblyReference.cache
 C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Infrastructure\obj\Debug\net8.0\Awushi.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
@@ -16,5 +18,3 @@ C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Infrastructure\obj\D
 C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Infrastructure\obj\Debug\net8.0\Awushi.Infrastructure.pdb
 C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Infrastructure\obj\Debug\net8.0\Awushi.Infrastructure.genruntimeconfig.cache
 C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Infrastructure\obj\Debug\net8.0\ref\Awushi.Infrastructure.dll
-C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Infrastructure\bin\Debug\net8.0\Awushi.Application.dll
-C:\Users\harry potter\Desktop\Auwshi_Api_v1.1-master\Awushi.Infrastructure\bin\Debug\net8.0\Awushi.Application.pdb

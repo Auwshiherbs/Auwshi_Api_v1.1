@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "OwSJAovFJ0rjsDDv5FG0/UTnlFn3iBqjaoBakqDr1HjjTmEUKFvRiHYNMZ88u6omqBvPi6ZzvZgLdtGfinf6Uw==",
+  "dgSpecHash": "9a34KKAOUIBkfinnfhZILYiW+YzGgqfHXBQDk2qKKwMQQyGPIsDFoY1f3TYC59NVxY5hrKuCZ75P2LPU40kZTw==",
   "success": true,
   "projectFilePath": "C:\\Users\\harry potter\\Desktop\\Auwshi_Api_v1.1-master\\Awushi.Infrastructure\\Awushi.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\harry potter\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\harry potter\\.nuget\\packages\\awssdk.core\\3.7.302.20\\awssdk.core.3.7.302.20.nupkg.sha512",
+    "C:\\Users\\harry potter\\.nuget\\packages\\awssdk.s3\\3.7.307\\awssdk.s3.3.7.307.nupkg.sha512",
     "C:\\Users\\harry potter\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\harry potter\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\harry potter\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
