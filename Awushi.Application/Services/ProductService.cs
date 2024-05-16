@@ -29,9 +29,10 @@ namespace Awushi.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<ProductDto> CreateAsync(CreateProductDto createProductDto)
+        public async Task<ProductDto> CreateAsync(CreateProductDto createProductDto, string imageUrl)
         {
             var product = _mapper.Map<Product>(createProductDto);
+            product.ImageName = imageUrl;
             var createdEntity = await _repository.CreateAsync(product);
             var entity = _mapper.Map<ProductDto>(createdEntity);
             return entity;

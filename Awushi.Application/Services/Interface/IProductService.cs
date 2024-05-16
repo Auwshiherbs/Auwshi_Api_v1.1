@@ -15,7 +15,7 @@ namespace Awushi.Application.Services.Interface
         Task<ProductDto> GetByIdAsync (int id);
         Task<IEnumerable<ProductDto>> GetAllAsync ();
         Task<IEnumerable<ProductDto>> GetAllByFilterAsync (int? categoryId, int? brandId, double? price);
-        Task<ProductDto> CreateAsync (CreateProductDto createProductDto);
+        Task<ProductDto> CreateAsync (CreateProductDto createProductDto, string imageUrl);
         Task UpdateAsync (UpdateProductDto updateProductDto);
         Task DeleteAsync (int id);
     }

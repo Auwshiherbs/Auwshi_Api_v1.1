@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Awushi.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7586fb44aeb71657aadfb7ff953e75cb65798266")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+94f050586df6e65153bb6b24cdcb7b9a1e10ad1a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Awushi.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Awushi.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

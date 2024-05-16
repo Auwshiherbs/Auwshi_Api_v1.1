@@ -6,6 +6,7 @@ using Awushi.Application.Common;
 using Awushi.Application.DTO.Product;
 using Awushi.Application.InputModels;
 using Awushi.Application.Services.Interface;
+using Awushi.Application.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,17 +19,14 @@ namespace Awushi.Web.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
+        private readonly IBlobService _blobService;
         protected APIResponse _response;
-        //private readonly IWebHostEnvironment _hostEnvironment;
-        //private readonly IConfiguration _configuration;
-        //private readonly IAmazonS3 _s3Client;
-        public ProductController(IProductService productService)
+
+        public ProductController(IProductService productService, IBlobService blobService)
         {
             _productService = productService;
+            _blobService = blobService;
             _response = new APIResponse();
-            //this._hostEnvironment = hostEnvironment;
-            //_configuration = configuration;
-            //_s3Client = s3Client;
         }
 
         
@@ -135,17 +133,24 @@ namespace Awushi.Web.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                {
+                {  
                     _response.StatusCode = HttpStatusCode.BadRequest;
                     _response.DisplayMessage = CommanMessage.CreateOperationFailed;
                     _response.AddError(ModelState.ToString());
                     return BadRequest(_response);
                 }
 
-                // Save image to S3 bucket
-                //createProductDto.ImageName = await SaveImage(createProductDto.ImageFile);
+                if (createProductDto.File == null || createProductDto.File.Length == 0)
+                {
+                    _response.StatusCode = HttpStatusCode.BadRequest;
+                    _response.DisplayMessage = CommanMessage.CreateOperationFailed;
+                    _response.AddError(ModelState.ToString());
+                    return BadRequest("Image is Required Field");
+                }
 
-                var product = await _productService.CreateAsync(createProductDto);
+                var fileName = $"{Guid.NewGuid()}{Path.GetExtension(createProductDto.File.FileName)}";
+                var imageUrl = await _blobService.UploadBlob(fileName,SD.SD_STORAGE_CONTAINER,createProductDto.File);
+                var product = await _productService.CreateAsync(createProductDto,imageUrl);
                 _response.StatusCode = HttpStatusCode.Created;
                 _response.IsSuccess = true;
                 _response.DisplayMessage = CommanMessage.CreateOperationSuccess;
@@ -227,42 +232,5 @@ namespace Awushi.Web.Controllers
             return _response;
         }
 
-        //[NonAction]
-        //public async Task<string> SaveImage(IFormFile imagefile)
-        //{
-        //    try
-        //    {
-        //        if (imagefile==null || imagefile.Length<=0)
-        //        {
-        //            throw new ArgumentException("invalid image file");
-        //        }
-
-        //        //var AwsAccessKey = _configuration["AwsConfiguration:AwsAccessKey"];
-        //        //var AwsSecretKey = _configuration["AwsConfiguration:AwsSecretKey"];
-        //        //var AwsBucketName = _configuration["AwsConfiguration:AwsBucketName"];
-        //        //var Region = _configuration["AwsConfiguration:Region"];
-
-        //        // Initialize AmazonS3Client with credentials and region
-        //        var s3Client = new AmazonS3Client(AwsAccessKey, AwsSecretKey, RegionEndpoint.GetBySystemName(Region));
-        //        var key = Guid.NewGuid().ToString();
-
-        //        using (var stream = imagefile.OpenReadStream())
-        //        {
-        //            var putRequest = new PutObjectRequest
-        //            {
-        //                BucketName = AwsBucketName,
-        //                Key = key,
-        //                InputStream = stream,
-        //                ContentType = imagefile.ContentType
-        //            };
-        //            await _s3Client.PutObjectAsync(putRequest);
-        //        }
-        //        return key;
-        //    }
-        //    catch(Exception ) 
-        //    {
-        //        throw;
-        //    }
-        //}
     }
 }
